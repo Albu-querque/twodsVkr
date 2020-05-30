@@ -13,5 +13,11 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost/portal_solution</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="common_db@localhost" uuid="6ef818a2-897d-4f95-92ed-02190207edd9">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost/common_db</jdbc-url>
+    </data-source>
   </component>
 </project>

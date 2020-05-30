@@ -1,7 +1,6 @@
 <#import "parts/common.ftl" as c>
 <#include "parts/functions.ftl">
 
-
 <@c.main>
     <div class="container-my">
         <table class="table table-bordered table-hover">
@@ -56,7 +55,7 @@
             </#list>
             <tr class="table-warning">
                 <td colspan="9">Сумма:</td>
-                <td class="bg-warning">
+                <td class="bg-warning" id="summaEdmc">
                     ${resSum}&#8381
                 </td>
             </tr>
@@ -90,7 +89,7 @@
             </#list>
             <tr class="table-warning">
                 <td colspan="5">Сумма:</td>
-                <td class="bg-warning">
+                <td class="bg-warning" id="summaPortal">
                     ${resSum}&#8381
                 </td>
             </tr>
