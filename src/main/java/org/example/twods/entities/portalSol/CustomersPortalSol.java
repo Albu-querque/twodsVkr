@@ -1,4 +1,4 @@
-package org.example.twods.entities.cloudComputing;
+package org.example.twods.entities.portalSol;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -14,7 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CustomersCloudComp {
+public class CustomersPortalSol {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;

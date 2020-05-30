@@ -1,4 +1,4 @@
-package org.example.twods.entities.edmc;
+package org.example.twods.entities.portalSol;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -14,29 +14,21 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class OrdersEdmc {
+public class OrdersPortalSol {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_platform")
-    Platforms platforms;
+    @JoinColumn(name = "id_portal")
+    Portal portal;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_customer")
-    CustomersEdmc customersEdmc;
+    CustomersPortalSol customer;
 
-
+    String date;
     @Column(name = "status_order")
     String statusOrder;
     @Column(name = "total_price")
     String totalPrice;
-    @Column(name="support")
-    boolean support;
-    @Column(name="mobile_app")
-    boolean mobileApp;
-    @Column(name="reg_price")
-    String regPrice;
-    @Column(name="mob_price")
-    String mobPrice;
 }

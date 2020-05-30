@@ -30,5 +30,4 @@ public class Licenses {
     boolean extendEdition;
     @Column(name = "corp_edition")
     boolean corpEdition;
-
 }

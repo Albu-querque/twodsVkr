@@ -1,4 +1,4 @@
-package org.example.twods.entities.cloudComputing;
+package org.example.twods.entities.portalSol;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -20,4 +20,8 @@ public class Portal {
     Long id;
 
     String type;
+    String description;
+
+    @OneToOne(mappedBy = "portal")
+    OrdersPortalSol order;
 }

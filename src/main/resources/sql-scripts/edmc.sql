@@ -24,7 +24,7 @@ create table licenses
     base_edition   bool,
     extend_edition bool,
     corp_edition   bool,
-    price          money   not null,
+    price          numeric   not null,
     primary key (id)
 );
 
@@ -35,7 +35,10 @@ create table orders
     id_customer  bigint  not null,
     status_order varchar not null,
     mobile_app   bool    not null,
-    total_price  money   not null,
+    support bool not null,
+    reg_price numeric,
+    mob_price numeric,
+    total_price  numeric   not null,
     primary key (id)
 );
 
@@ -83,84 +86,13 @@ values (4, 4, 'Directum');
 insert into platforms (id, id_license, type)
 values (5, 5, 'DirectumRX');
 
-insert into orders(id, id_platform, id_customer, status_order, mobile_app, total_price)
-values (1, 1, 1, 'Закрыт', true, 310000);
-insert into orders(id, id_platform, id_customer, status_order, mobile_app, total_price)
-values (2, 2, 2, 'Закрыт', true, 85000);
-insert into orders(id, id_platform, id_customer, status_order, mobile_app, total_price)
-values (3, 3, 3, 'Интеграционное тестирование', false, 100000);
-insert into orders(id, id_platform, id_customer, status_order, mobile_app, total_price)
-values (4, 4, 4, 'Закрыт', true, 135000);
-insert into orders(id, id_platform, id_customer, status_order, mobile_app, total_price)
-values (5, 5, 5, 'Тестируется', false, 0);
-
-
---cloud_computing
-create table customers
-(
-    id       bigint,
-    name_org varchar not null,
-    contact  varchar not null,
-    address  varchar not null,
-    email    varchar not null,
-    primary key (id)
-);
-
-create table portal
-(
-    id            bigint,
-    type          varchar   not null,
-    description   varchar,
-    available_sol varchar   not null,
-    date          timestamp not null,
-    price         money     not null,
-    primary key (id)
-);
-
-create table orders
-(
-    id           bigint  not null,
-    id_portal    bigint  not null,
-    id_customer  bigint  not null,
-    status_order varchar not null,
-    total_price  money   not null,
-    primary key (id)
-);
-
-alter table orders
-    add constraint orders_portals_fk foreign key (id_portal) references portal (id);
-alter table orders
-    add constraint orders_customers_fk foreign key (id_customer) references customers (id);
-
-insert into customers (id, name_org, contact, address, email)
-values (1, '', '', '',
-        '');
-insert into customers (id, name_org, contact, address, email)
-values (2, '', '', '',
-        '');
-insert into customers (id, name_org, contact, address, email)
-values (3, '', '', '',
-        '');
-insert into customers (id, name_org, contact, address, email)
-values (4, '', '', '',
-        '');
-insert into customers (id, name_org, contact, address, email)
-values (5, '', '', '',
-        '');
-
-insert into portal (id, type, description, available_sol, date, price)
-values (1, '', '', '', '', 0);
-insert into portal (id, type, description, available_sol, date, price)
-values (1, '', '', '', '', 0);
-insert into portal (id, type, description, available_sol, date, price)
-values (1, '', '', '', '', 0);
-insert into portal (id, type, description, available_sol, date, price)
-values (1, '', '', '', '', 0);
-insert into portal (id, type, description, available_sol, date, price)
-values (1, '', '', '', '', 0);
-insert into portal (id, type, description, available_sol, date, price)
-values (1, '', '', '', '', 0);
-
-
-
-
+insert into orders(id, id_platform, id_customer, status_order, mobile_app, support, reg_price, mob_price, total_price)
+values (1, 1, 1, 'Закрыт', true, true, 15000, 29000, 700000);
+insert into orders(id, id_platform, id_customer, status_order, mobile_app, support, reg_price, mob_price, total_price)
+values (2, 2, 2, 'Закрыт', true, true, 10000, 40000, 450000);
+insert into orders(id, id_platform, id_customer, status_order, mobile_app, support, reg_price, mob_price, total_price)
+values (3, 3, 3, 'Интеграционное тестирование', false, false, 0, 30000, 500000);
+insert into orders(id, id_platform, id_customer, status_order, mobile_app, support, reg_price, mob_price, total_price)
+values (4, 4, 4, 'Закрыт', true, true, 22000, 25000, 250000);
+insert into orders(id, id_platform, id_customer, status_order, mobile_app, support, reg_price, mob_price, total_price)
+values (5, 5, 5, 'Тестируется', false, false, 0, 0, 300000);

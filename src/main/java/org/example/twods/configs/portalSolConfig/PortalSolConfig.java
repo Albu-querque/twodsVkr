@@ -1,4 +1,4 @@
-package org.example.twods.configs.cloudComputingConfig;
+package org.example.twods.configs.portalSolConfig;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -20,20 +20,20 @@ import java.util.HashMap;
 @PropertySource({"classpath:db-conf.properties",
                  "classpath:hibernate-conf.properties"})
 @EnableJpaRepositories(
-        basePackages = "org.example.twods.repositories.cloudComputingRepo",
-        entityManagerFactoryRef = "cloudCompEntityManager",
-        transactionManagerRef = "cloudCompTransactionManager"
+        basePackages = "org.example.twods.repositories.portalSolRepo",
+        entityManagerFactoryRef = "portalSolEntityManager",
+        transactionManagerRef = "portalSolTransactionManager"
 )
-public class CloudComputingConfig {
+public class PortalSolConfig {
     @Autowired
     Environment env;
 
     @Bean
     @Primary
-    public LocalContainerEntityManagerFactoryBean cloudCompEntityManager() {
+    public LocalContainerEntityManagerFactoryBean portalSolEntityManager() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(cloudCompDataSource());
-        em.setPackagesToScan(new String[] {"org.example.twods.entities.cloudComputing"});
+        em.setDataSource(portalSolDataSource());
+        em.setPackagesToScan(new String[] {"org.example.twods.entities.portalSol"});
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
@@ -50,12 +50,12 @@ public class CloudComputingConfig {
 
     @Bean
     @Primary
-    public DataSource cloudCompDataSource() {
+    public DataSource portalSolDataSource() {
         DriverManagerDataSource ds = new DriverManagerDataSource();
-        ds.setDriverClassName(checkIsNull(env.getProperty("db.cloudComp.datasource.driverClassName")));
-        ds.setUrl(checkIsNull(env.getProperty("db.cloudComp.datasource.url")));
-        ds.setUsername(checkIsNull(env.getProperty("db.cloudComp.datasource.username")));
-        ds.setPassword(env.getProperty("db.cloudComp.datasource.password"));
+        ds.setDriverClassName(checkIsNull(env.getProperty("db.portalSol.datasource.driverClassName")));
+        ds.setUrl(checkIsNull(env.getProperty("db.portalSol.datasource.url")));
+        ds.setUsername(checkIsNull(env.getProperty("db.portalSol.datasource.username")));
+        ds.setPassword(env.getProperty("db.portalSol.datasource.password"));
         return ds;
     }
 
@@ -68,9 +68,9 @@ public class CloudComputingConfig {
 
     @Bean
     @Primary
-    public PlatformTransactionManager cloudCompTransactionManager() {
+    public PlatformTransactionManager portalSolTransactionManager() {
         JpaTransactionManager tm = new JpaTransactionManager();
-        tm.setEntityManagerFactory(cloudCompEntityManager().getObject());
+        tm.setEntityManagerFactory(portalSolEntityManager().getObject());
         return tm;
     }
 }
